@@ -121,16 +121,16 @@
     <value>Tentative _ / @</value>
   </data>
   <data name="DefeatMessage" xml:space="preserve">
-    <value>You loose. The door is locked now.</value>
+    <value>Maximum attempts are reached, the application will lock up.</value>
   </data>
   <data name="EmptyPwdInput" xml:space="preserve">
-    <value>Vous n'avez pas renseigné de caractères.</value>
+    <value>You haven't entered any characters.</value>
   </data>
   <data name="OutOfTime" xml:space="preserve">
     <value>You didn't find the password before the time allowed.</value>
   </data>
-  <data name="WinMessage" xml:space="preserve">
-    <value>Good job, you find the password. The door is now open.</value>
+  <data name="PASSWORD" xml:space="preserve">
+    <value>vivelessio</value>
   </data>
   <data name="WrongPwdInput" xml:space="preserve">
     <value>Wrong password.</value>

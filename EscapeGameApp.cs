@@ -7,20 +7,22 @@ namespace EscapeGame
     public partial class EscapeGameApp : Form
     {
         private const int MAX_ATTEMPTS = 3;
-        private const string PASSWORD = "";
         private int m_ActualAttempt = 0;
+        private bool m_canBeClosed = false;
 
         public string Proposition { get; set; } = "";
 
         public EscapeGameApp()
         {
             InitializeComponent();
+            PopulateTreeView();            
         }
 
         #region Events
+        #region authPanel Events Components
         private void Timer_Tick(object sender, EventArgs e)
         {
-            ManageProgressTimeBar(); // This method will decrement the Value of the Vertical Progress Bar and check if the time is over.
+            ManageProgressTimeBar(); // This method will decrement the Value attribute of the Vertical Progress Bar and check if the time is over.
         }
 
         private void EscapeGame_Load(object sender, EventArgs e)
@@ -48,18 +50,27 @@ namespace EscapeGame
                 SetVisualError(Properties.Resources.EmptyPwdInput);
                 return;
             }
-            else if (Proposition == PASSWORD) // The password is found.
+            else if (Proposition == Properties.Resources.PASSWORD) // The password is found.
             {
-                MessageBox.Show(Properties.Resources.WinMessage);
+                authPanel.Visible = false;
+                docsPanel.Visible = true;
+
+                m_canBeClosed = true; // The form can be closed.
+                this.ControlBox = true;
+
                 return;
             }
             else if (m_ActualAttempt == MAX_ATTEMPTS) // Maximum attempts reached. The game is over.
             {
+                timerTime.Enabled = false;
+
                 MessageBox.Show(Properties.Resources.DefeatMessage);
+                
+                this.m_canBeClosed = true; // The form can be closed.
 
                 this.Close(); // Will close the form, this is managed in the FormClosing event.
             }
-            else if (Proposition != PASSWORD && m_ActualAttempt < MAX_ATTEMPTS) // Wrong password, we increment the attempt number.
+            else if (Proposition != Properties.Resources.PASSWORD && m_ActualAttempt < MAX_ATTEMPTS) // Wrong password, we increment the attempt number.
             {
                 input_pwd.Clear(); // We clear the wrong password.
 
@@ -73,11 +84,19 @@ namespace EscapeGame
         // Prevents from the Alt+F4 hotkey combination.
         private void EscapeGameApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (m_ActualAttempt == 3 || verticalProgressBar1.Value == 0)
+            if (m_canBeClosed == true)
                 e.Cancel = false;
             else
                 e.Cancel = true;
         }
+        #endregion
+
+        #region docsPanel Events Components
+        private void disconnectButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
         #endregion
 
         #region Components Update Methods
@@ -99,25 +118,28 @@ namespace EscapeGame
         /// </summary>
         private void ManageProgressTimeBar()
         {
-            if (verticalProgressBar1.Value != 0)
+            if (verticalProgressBar1.Value > 0)
             {
                 verticalProgressBar1.Value--; // Decrement the Value property.
 
-                if (verticalProgressBar1.Value == verticalProgressBar1.Maximum / 2)
+                if (verticalProgressBar1.Value <= verticalProgressBar1.Maximum / 2 && verticalProgressBar1.Value >= verticalProgressBar1.Maximum / 5)
                 {
                     verticalProgressBar1.Color = Color.Orange;
                     return;
                 }
-                if (verticalProgressBar1.Value == verticalProgressBar1.Maximum / 4)
+                if (verticalProgressBar1.Value <= verticalProgressBar1.Maximum / 5)
                 {
                     verticalProgressBar1.Color = Color.Red;
                     return;
                 }
             }
-            else
+            else if (verticalProgressBar1.Value == 0) // The form will be closed.
             {
                 timerTime.Enabled = false;
-                MessageBox.Show(Properties.Resources.OutOfTime);
+                MessageBox.Show(this, Properties.Resources.OutOfTime, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+
+                m_canBeClosed = true;
                 this.Close();
             }
         }
@@ -128,7 +150,37 @@ namespace EscapeGame
         private void SetVisualError(string message)
         {
             input_pwd.BorderColor = Color.Red;
-            errorProvider.SetError(input_pwd, message);
+            errorProvider.SetError(input_pwd, message); 
+        }
+
+        /// <summary>
+        /// This method will fill the <see cref="treeView"/> component.
+        /// </summary>
+        private void PopulateTreeView()
+        {
+            
+            treeView.BeginUpdate();
+
+            // This node is a folder that contains all the files.
+            TreeNode rootNode = new TreeNode()
+            {
+                Name = "rootNode",
+                Text = "Top Secret",
+                ImageIndex = 1,
+                SelectedImageIndex = 1
+            };
+
+            // We create all the files contained in the folder (in the rootNode)
+            rootNode.Nodes.Add(new TreeNode("USA", 0, 0));
+            rootNode.Nodes.Add(new TreeNode("Irak2003", 0, 0));
+            rootNode.Nodes.Add(new TreeNode("France2019", 0, 0));
+            rootNode.Nodes.Add(new TreeNode("Crimée", 0, 0));
+            rootNode.Nodes.Add(new TreeNode("Egypte", 0, 0));
+            rootNode.Nodes.Add(new TreeNode("Iran", 0, 0));
+
+            this.treeView.Nodes.Add(rootNode); // We add the rootNode to the TreeView
+
+            treeView.EndUpdate();
         }
         #endregion
     }

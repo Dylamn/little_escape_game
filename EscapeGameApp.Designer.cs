@@ -37,11 +37,22 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.verticalProgressBar1 = new EscapeGame.VerticalProgressBar();
+            this.authPanel = new System.Windows.Forms.Panel();
+            this.docsPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.disconnectButton = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.treeView = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.input_pwd = new EscapeGame.CustomTextBox();
+            this.verticalProgressBar1 = new EscapeGame.VerticalProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.authPanel.SuspendLayout();
+            this.docsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -103,19 +114,93 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
-            // verticalProgressBar1
+            // authPanel
             // 
-            this.verticalProgressBar1.BorderStyle = EscapeGame.BorderStyles.None;
-            this.verticalProgressBar1.Color = System.Drawing.Color.Green;
-            this.verticalProgressBar1.Location = new System.Drawing.Point(686, 12);
-            this.verticalProgressBar1.Maximum = 240;
-            this.verticalProgressBar1.Minimum = 0;
-            this.verticalProgressBar1.Name = "verticalProgressBar1";
-            this.verticalProgressBar1.Size = new System.Drawing.Size(20, 397);
-            this.verticalProgressBar1.Step = 1;
-            this.verticalProgressBar1.Style = EscapeGame.Styles.Solid;
-            this.verticalProgressBar1.TabIndex = 2;
-            this.verticalProgressBar1.Value = 240;
+            this.authPanel.Controls.Add(this.lblAttempt);
+            this.authPanel.Controls.Add(this.input_pwd);
+            this.authPanel.Controls.Add(this.buttonOK);
+            this.authPanel.Controls.Add(this.pictureBox2);
+            this.authPanel.Controls.Add(this.label1);
+            this.authPanel.Controls.Add(this.verticalProgressBar1);
+            this.authPanel.Controls.Add(this.pictureBox1);
+            this.authPanel.Location = new System.Drawing.Point(0, 0);
+            this.authPanel.Name = "authPanel";
+            this.authPanel.Size = new System.Drawing.Size(720, 420);
+            this.authPanel.TabIndex = 8;
+            // 
+            // docsPanel
+            // 
+            this.docsPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.docsPanel.Controls.Add(this.label3);
+            this.docsPanel.Controls.Add(this.disconnectButton);
+            this.docsPanel.Controls.Add(this.pictureBox3);
+            this.docsPanel.Controls.Add(this.label2);
+            this.docsPanel.Controls.Add(this.treeView);
+            this.docsPanel.Location = new System.Drawing.Point(0, 0);
+            this.docsPanel.Name = "docsPanel";
+            this.docsPanel.Size = new System.Drawing.Size(720, 420);
+            this.docsPanel.TabIndex = 9;
+            this.docsPanel.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(13, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "V. Poutine";
+            // 
+            // disconnectButton
+            // 
+            this.disconnectButton.Location = new System.Drawing.Point(631, 12);
+            this.disconnectButton.Name = "disconnectButton";
+            this.disconnectButton.Size = new System.Drawing.Size(75, 23);
+            this.disconnectButton.TabIndex = 3;
+            this.disconnectButton.Text = "Disconnect";
+            this.disconnectButton.UseVisualStyleBackColor = true;
+            this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(554, 291);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(152, 115);
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "User authentificated";
+            // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.SystemColors.Control;
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.treeView.ImageIndex = 0;
+            this.treeView.ImageList = this.imageList1;
+            this.treeView.ItemHeight = 26;
+            this.treeView.Location = new System.Drawing.Point(209, 45);
+            this.treeView.Name = "treeView";
+            this.treeView.SelectedImageIndex = 0;
+            this.treeView.Size = new System.Drawing.Size(302, 372);
+            this.treeView.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "docfile.png");
+            this.imageList1.Images.SetKeyName(1, "folder.png");
             // 
             // input_pwd
             // 
@@ -130,6 +215,20 @@
             this.input_pwd.TabIndex = 0;
             this.input_pwd.TextChanged += new System.EventHandler(this.Input_pwd_TextChanged);
             // 
+            // verticalProgressBar1
+            // 
+            this.verticalProgressBar1.BorderStyle = EscapeGame.BorderStyles.None;
+            this.verticalProgressBar1.Color = System.Drawing.Color.Green;
+            this.verticalProgressBar1.Location = new System.Drawing.Point(686, 9);
+            this.verticalProgressBar1.Maximum = 300;
+            this.verticalProgressBar1.Minimum = 0;
+            this.verticalProgressBar1.Name = "verticalProgressBar1";
+            this.verticalProgressBar1.Size = new System.Drawing.Size(20, 397);
+            this.verticalProgressBar1.Step = 1;
+            this.verticalProgressBar1.Style = EscapeGame.Styles.Solid;
+            this.verticalProgressBar1.TabIndex = 2;
+            this.verticalProgressBar1.Value = 300;
+            // 
             // EscapeGameApp
             // 
             this.AcceptButton = this.buttonOK;
@@ -138,26 +237,24 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(718, 418);
             this.ControlBox = false;
-            this.Controls.Add(this.verticalProgressBar1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.input_pwd);
-            this.Controls.Add(this.lblAttempt);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.authPanel);
+            this.Controls.Add(this.docsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EscapeGameApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EscapeGameApp_FormClosing);
             this.Load += new System.EventHandler(this.EscapeGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.authPanel.ResumeLayout(false);
+            this.authPanel.PerformLayout();
+            this.docsPanel.ResumeLayout(false);
+            this.docsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -172,6 +269,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private VerticalProgressBar verticalProgressBar1;
+        private System.Windows.Forms.Panel authPanel;
+        private System.Windows.Forms.Panel docsPanel;
+        private System.Windows.Forms.TreeView treeView;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button disconnectButton;
+        private System.Windows.Forms.Label label3;
     }
 }
 

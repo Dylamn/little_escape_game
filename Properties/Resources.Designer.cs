@@ -70,7 +70,7 @@ namespace EscapeGame.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à You loose. The door is locked now..
+        ///   Recherche une chaîne localisée semblable à Maximum attempts are reached, the application will lock up..
         /// </summary>
         internal static string DefeatMessage {
             get {
@@ -79,7 +79,7 @@ namespace EscapeGame.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Vous n&apos;avez pas renseigné de caractères..
+        ///   Recherche une chaîne localisée semblable à You haven&apos;t entered any characters..
         /// </summary>
         internal static string EmptyPwdInput {
             get {
@@ -97,11 +97,11 @@ namespace EscapeGame.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Good job, you find the password. The door is now open..
+        ///   Recherche une chaîne localisée semblable à vivelessio.
         /// </summary>
-        internal static string WinMessage {
+        internal static string PASSWORD {
             get {
-                return ResourceManager.GetString("WinMessage", resourceCulture);
+                return ResourceManager.GetString("PASSWORD", resourceCulture);
             }
         }
         
